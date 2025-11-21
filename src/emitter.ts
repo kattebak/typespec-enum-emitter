@@ -1,11 +1,11 @@
+import type { EmitContext } from "@typespec/compiler";
 import {
 	type Enum,
 	type EnumMember,
-	type Namespace,
 	emitFile,
+	type Namespace,
 	resolvePath,
 } from "@typespec/compiler";
-import type { EmitContext } from "@typespec/compiler";
 import type { EnumEmitterOptions } from "./lib.js";
 
 export async function $onEmit(context: EmitContext<EnumEmitterOptions>) {
@@ -88,5 +88,5 @@ function generateTypeScript(enums: Enum[]): string {
 		})
 		.join("\n\n");
 
-	return enumDeclarations + "\n";
+	return `${enumDeclarations}\n`;
 }
