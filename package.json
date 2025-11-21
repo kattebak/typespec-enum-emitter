@@ -1,5 +1,5 @@
 {
-	"name": "typespec-enum-emitter",
+	"name": "@kattebak/typespec-enum-emitter",
 	"version": "1.0.0",
 	"description": "TypeSpec emitter for JavaScript const enums",
 	"type": "module",
@@ -16,10 +16,8 @@
 		"watch": "tsc --watch",
 		"test": "npm run build"
 	},
-	"dependencies": {
-		"@typespec/compiler": "^1.4.0"
-	},
 	"devDependencies": {
+		"@typespec/compiler": "^1.4.0",
 		"typescript": "^5.9.3"
 	}
 }
