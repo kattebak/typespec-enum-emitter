@@ -1,0 +1,5 @@
+emit:
+  - typespec-enum-emitter
+options:
+  typespec-enum-emitter:
+    output-file: "enums.js"
