@@ -14,7 +14,8 @@
 	"scripts": {
 		"build": "tsc",
 		"watch": "tsc --watch",
-		"test": "npm run build && npm run lint",
+		"test": "npm run build && npm run lint && npm run build",
+		"test:emit": "sp compile test/main.tsp --config test/tspconfig.yaml",
 		"fix": "npx @biomejs/biome check --write",
 		"lint": "npx @biomejs/biome check"
 	},

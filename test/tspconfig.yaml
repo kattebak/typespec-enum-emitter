@@ -3,3 +3,6 @@ emit:
 options:
   typespec-enum-emitter:
     output-file: "enums.js"
+    emitter-output-dir: "{cwd}/build/ts-enums"
+    package-name: "@mycorp/enums"
+    package-version: "0.0.1"
