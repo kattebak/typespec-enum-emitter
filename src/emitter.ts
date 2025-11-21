@@ -30,6 +30,8 @@ export async function $onEmit(context: EmitContext<EnumEmitterOptions>) {
 
 	const outputDir = context.emitterOutputDir;
 	const outputFile = context.options["output-file"] ?? "enums.js";
+	const packageName = context.options["package-name"];
+	const packageVersion = context.options["package-version"] ?? "0.0.1";
 
 	const jsContent = generateJavaScript(enums);
 	const tsContent = generateTypeScript(enums);
@@ -43,6 +45,15 @@ export async function $onEmit(context: EmitContext<EnumEmitterOptions>) {
 		path: resolvePath(outputDir, outputFile.replace(".js", ".d.ts")),
 		content: tsContent,
 	});
+
+	// Generate package.json if package-name is provided
+	if (packageName) {
+		const packageJson = generatePackageJson(packageName, packageVersion);
+		await emitFile(context.program, {
+			path: resolvePath(outputDir, "package.json"),
+			content: packageJson,
+		});
+	}
 }
 
 function generateJavaScript(enums: Enum[]): string {
@@ -89,4 +100,16 @@ function generateTypeScript(enums: Enum[]): string {
 		.join("\n\n");
 
 	return `${enumDeclarations}\n`;
+}
+
+function generatePackageJson(name: string, version: string): string {
+	const packageJson = {
+		name,
+		version,
+		type: "module",
+		main: "enums.js",
+		types: "enums.d.ts",
+	};
+
+	return JSON.stringify(packageJson, null, 2);
 }

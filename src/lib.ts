@@ -1,6 +1,8 @@
 export interface EnumEmitterOptions {
-	"output-dir"?: string;
 	"output-file"?: string;
+	"emitter-output-dir"?: string;
+	"package-name"?: string;
+	"package-version"?: string;
 }
 
 export const $lib = {
@@ -8,8 +10,14 @@ export const $lib = {
 		type: "object",
 		additionalProperties: false,
 		properties: {
-			"output-dir": { type: "string", nullable: true },
 			"output-file": { type: "string", nullable: true, default: "enums.js" },
+			"emitter-output-dir": {
+				type: "string",
+				format: "absolute-path",
+				nullable: true,
+			},
+			"package-name": { type: "string", nullable: true },
+			"package-version": { type: "string", nullable: true, default: "0.0.1" },
 		},
 		required: [],
 	} as const,
