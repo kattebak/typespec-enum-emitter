@@ -4,6 +4,13 @@
 	"description": "TypeSpec emitter for JavaScript const enums",
 	"type": "module",
 	"main": "dist/index.js",
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"dist",
+		"tsp"
+	],
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
