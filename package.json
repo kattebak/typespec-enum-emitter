@@ -20,6 +20,7 @@
 		"@typespec/compiler": "^1.4.0"
 	},
 	"devDependencies": {
+		"semantic-release": "^25.0.2",
 		"typescript": "^5.9.3"
 	}
 }
