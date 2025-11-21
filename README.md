@@ -49,6 +49,9 @@ emit:
 options:
   typespec-enum-emitter:
     output-file: "enums.js"
+    emitter-output-dir: "{cwd}/build/ts-enums"
+    package-name: "@mycorp/enums"
+    package-version: "1.0.0"
 ```
 
 ### 3. Compile
@@ -109,7 +112,9 @@ export declare const HttpStatusCode: {
 ## Configuration Options
 
 - `output-file`: Name of the output file (default: "enums.js")
-- `output-dir`: Output directory (defaults to emitter output directory)
+- `emitter-output-dir`: Custom output directory (supports variable interpolation like `{cwd}`, `{project-root}`)
+- `package-name`: If provided, generates a package.json file with this name
+- `package-version`: Version for the generated package.json (default: "0.0.1")
 
 ## Why Use This?
 
