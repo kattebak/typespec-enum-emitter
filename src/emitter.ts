@@ -75,7 +75,7 @@ function generateEnumObject(members: EnumMember[]): string {
 			const key = member.name;
 			const value = member.value ?? member.name;
 			const valueStr = typeof value === "string" ? `"${value}"` : value;
-			return `\t${key}: ${valueStr}`;
+			return `\t"${key}": ${valueStr}`;
 		})
 		.join(",\n");
 
@@ -91,7 +91,7 @@ function generateTypeScript(enums: Enum[]): string {
 					const key = member.name;
 					const value = member.value ?? member.name;
 					const valueStr = typeof value === "string" ? `"${value}"` : value;
-					return `\treadonly ${key}: ${valueStr}`;
+					return `\treadonly "${key}": ${valueStr}`;
 				})
 				.join(";\n");
 
