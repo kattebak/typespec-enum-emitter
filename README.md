@@ -45,7 +45,7 @@ enum HttpStatusCode {
 
 ```yaml
 emit:
-  - typespec-enum-emitter
+  - @kattebak/typespec-enum-emitter
 options:
   typespec-enum-emitter:
     output-file: "enums.js"
@@ -66,21 +66,21 @@ npx tsp compile .
 Object.defineProperty(exports, "__esModule", { value: true });
 
 export const Status = {
-	Active: "Active",
-	Inactive: "Inactive",
-	Pending: "Pending",
+  Active: "Active",
+  Inactive: "Inactive",
+  Pending: "Pending",
 };
 
 export const Priority = {
-	Low: "low",
-	Medium: "medium",
-	High: "high",
+  Low: "low",
+  Medium: "medium",
+  High: "high",
 };
 
 export const HttpStatusCode = {
-	OK: 200,
-	NotFound: 404,
-	InternalServerError: 500,
+  OK: 200,
+  NotFound: 404,
+  InternalServerError: 500,
 };
 ```
 
@@ -88,21 +88,21 @@ export const HttpStatusCode = {
 
 ```typescript
 export declare const Status: {
-	readonly Active: "Active";
-	readonly Inactive: "Inactive";
-	readonly Pending: "Pending";
+  readonly Active: "Active";
+  readonly Inactive: "Inactive";
+  readonly Pending: "Pending";
 };
 
 export declare const Priority: {
-	readonly Low: "low";
-	readonly Medium: "medium";
-	readonly High: "high";
+  readonly Low: "low";
+  readonly Medium: "medium";
+  readonly High: "high";
 };
 
 export declare const HttpStatusCode: {
-	readonly OK: 200;
-	readonly NotFound: 404;
-	readonly InternalServerError: 500;
+  readonly OK: 200;
+  readonly NotFound: 404;
+  readonly InternalServerError: 500;
 };
 ```
 
