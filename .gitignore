@@ -4,3 +4,4 @@ dist/
 .DS_Store
 tsp-output/
 tsconfig.tsbuildinfo
+build

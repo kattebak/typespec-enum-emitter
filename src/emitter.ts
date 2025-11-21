@@ -66,7 +66,7 @@ function generateJavaScript(enums: Enum[]): string {
 		})
 		.join("\n\n");
 
-	return `"use strict";\nObject.defineProperty(exports, "__esModule", { value: true });\n\n${enumDefinitions}\n`;
+	return enumDefinitions;
 }
 
 function generateEnumObject(members: EnumMember[]): string {
