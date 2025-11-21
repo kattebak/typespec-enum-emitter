@@ -1,7 +1,7 @@
 emit:
-  - typespec-enum-emitter
+  - "@kattebak/typespec-enum-emitter"
 options:
-  typespec-enum-emitter:
+  "@kattebak/typespec-enum-emitter":
     output-file: "enums.js"
     emitter-output-dir: "{cwd}/build/ts-enums"
     package-name: "@mycorp/enums"

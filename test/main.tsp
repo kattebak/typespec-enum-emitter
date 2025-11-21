@@ -1,4 +1,4 @@
-import "typespec-enum-emitter";
+import "@kattebak/typespec-enum-emitter";
 
 enum Status {
 	Active,
