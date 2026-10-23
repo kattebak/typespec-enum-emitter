@@ -74,8 +74,9 @@ function generateEnumObject(members: EnumMember[]): string {
 		.map((member) => {
 			const key = member.name;
 			const value = member.value ?? member.name;
-			const valueStr = typeof value === "string" ? `"${value}"` : value;
-			return `\t"${key}": ${valueStr}`;
+			const valueStr =
+				typeof value === "string" ? JSON.stringify(value) : value;
+			return `\t${JSON.stringify(key)}: ${valueStr}`;
 		})
 		.join(",\n");
 
@@ -90,8 +91,9 @@ function generateTypeScript(enums: Enum[]): string {
 				.map((member) => {
 					const key = member.name;
 					const value = member.value ?? member.name;
-					const valueStr = typeof value === "string" ? `"${value}"` : value;
-					return `\treadonly "${key}": ${valueStr}`;
+					const valueStr =
+						typeof value === "string" ? JSON.stringify(value) : value;
+					return `\treadonly ${JSON.stringify(key)}: ${valueStr}`;
 				})
 				.join(";\n");
 

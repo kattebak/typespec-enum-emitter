@@ -21,10 +21,11 @@
 	"scripts": {
 		"build": "tsc",
 		"watch": "tsc --watch",
-		"test": "npm run build && npm run lint && npm run test:emit",
+		"test": "npm run build && npm run lint && npm run test:emit && npm run test:output",
 		"test:emit": "tsp compile test/main.tsp --config test/tspconfig.yaml",
 		"fix": "npx @biomejs/biome check --write",
-		"lint": "npx @biomejs/biome check"
+		"lint": "npx @biomejs/biome check",
+		"test:output": "node --test --test-timeout=60000 test/escaping.test.mjs && tsc -p test/tsconfig.json"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.3.7",
