@@ -1,0 +1,5 @@
+emit:
+  - "@kattebak/typespec-enum-emitter"
+options:
+  "@kattebak/typespec-enum-emitter":
+    emitter-output-dir: "{cwd}/build/stdlib-default"
