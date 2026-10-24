@@ -24,7 +24,11 @@ export async function $onEmit(context: EmitContext<EnumEmitterOptions>) {
 	const globalNamespace = context.program.getGlobalNamespaceType();
 	collectEnums(globalNamespace);
 
-	if (enums.length === 0) {
+	const emitted = context.options["exclude-stdlib"]
+		? enums.filter((enumType) => !isStdlibEnum(globalNamespace, enumType))
+		: enums;
+
+	if (emitted.length === 0) {
 		return;
 	}
 
@@ -33,8 +37,8 @@ export async function $onEmit(context: EmitContext<EnumEmitterOptions>) {
 	const packageName = context.options["package-name"];
 	const packageVersion = context.options["package-version"] ?? "0.0.1";
 
-	const jsContent = generateJavaScript(enums);
-	const tsContent = generateTypeScript(enums);
+	const jsContent = generateJavaScript(emitted);
+	const tsContent = generateTypeScript(emitted);
 
 	await emitFile(context.program, {
 		path: resolvePath(outputDir, outputFile),
@@ -54,6 +58,18 @@ export async function $onEmit(context: EmitContext<EnumEmitterOptions>) {
 			content: packageJson,
 		});
 	}
+}
+
+function isStdlibEnum(globalNamespace: Namespace, enumType: Enum): boolean {
+	const stdlibNamespace = globalNamespace.namespaces.get("TypeSpec");
+	let namespace = enumType.namespace;
+	while (namespace) {
+		if (namespace === stdlibNamespace) {
+			return true;
+		}
+		namespace = namespace.namespace;
+	}
+	return false;
 }
 
 function generateJavaScript(enums: Enum[]): string {

@@ -115,6 +115,7 @@ export declare const HttpStatusCode: {
 - `emitter-output-dir`: Custom output directory (supports variable interpolation like `{cwd}`, `{project-root}`)
 - `package-name`: If provided, generates a package.json file with this name
 - `package-version`: Version for the generated package.json (default: "0.0.1")
+- `exclude-stdlib`: Skip enums declared in the `TypeSpec` namespace and its children, such as `TypeSpec.Http.AuthType` or `TypeSpec.Lifecycle`, and emit only your own enums (default: `false`)
 
 ## Why Use This?
 

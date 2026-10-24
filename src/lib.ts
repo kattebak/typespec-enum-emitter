@@ -3,6 +3,7 @@ export interface EnumEmitterOptions {
 	"emitter-output-dir"?: string;
 	"package-name"?: string;
 	"package-version"?: string;
+	"exclude-stdlib"?: boolean;
 }
 
 export const $lib = {
@@ -18,6 +19,7 @@ export const $lib = {
 			},
 			"package-name": { type: "string", nullable: true },
 			"package-version": { type: "string", nullable: true, default: "0.0.1" },
+			"exclude-stdlib": { type: "boolean", nullable: true, default: false },
 		},
 		required: [],
 	} as const,
